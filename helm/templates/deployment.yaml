@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: tiny
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: tiny-{{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: tiny-{{ .Release.Name }}
+    spec:
+      containers:
+      - name: tiny
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        ports:
+        - containerPort: 8080
+          name: http
+
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 3

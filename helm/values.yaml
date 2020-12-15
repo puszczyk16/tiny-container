@@ -1,0 +1,15 @@
+replicas: 1
+image:
+  repository: ciapatti79/tiny-container
+  tag: 0.1
+  pullPolicy: IfNotPresent
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  hosts:
+    - tiny-container.192.168.99.100.nip.io
+

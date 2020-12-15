@@ -1,7 +1,7 @@
 replicas: 1
 image:
   repository: ciapatti79/tiny-container
-  tag: blalala
+  tag: latest
   pullPolicy: IfNotPresent
 
 ingress:

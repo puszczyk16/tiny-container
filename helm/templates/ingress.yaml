@@ -8,7 +8,7 @@ metadata:
   name: {{ $releaseName }}
 spec:
   rules:
-{{- range .Values.ingressSS.hosts }}
+{{- range .Values.ingress.hosts }}
   - host: {{ . }}
     http:
       paths:

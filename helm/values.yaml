@@ -1,8 +1,8 @@
-replicas: 1
+replicas: 2
 image:
   repository: ciapatti79/tiny-container
   tag: 0.21
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 ingress:
   enabled: true

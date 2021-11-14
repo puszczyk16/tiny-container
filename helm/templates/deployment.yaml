@@ -8,14 +8,14 @@ spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: tiny-{{ .Release.Name }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: tiny-{{ .Release.Name }}
+        app: {{ .Release.Name }}
     spec:
       containers:
-      - name: tiny
+      - name: tiny-container
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         ports:
         - containerPort: 8089

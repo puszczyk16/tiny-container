@@ -9,6 +9,5 @@ ingress:
   annotations: 
     kubernetes.io/ingress.class: nginx
   path: /
-  hosts:
-    - tiny-container.20.67.66.98.nip.io
+  host: tiny-container.20.67.66.98.nip.io
 

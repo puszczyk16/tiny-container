@@ -11,6 +11,4 @@ spec:
     targetPort: http
     name: http
   selector:
-    app: tiny-{{ .Release.Name }}
-
-
+    app: {{ .Release.Name }}

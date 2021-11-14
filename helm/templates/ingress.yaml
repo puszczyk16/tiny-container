@@ -1,19 +1,18 @@
-{{- $releaseName := .Release.Name -}}
-{{- if .Values.ingress.enabled -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: {{ .Release.Name }}
   annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-  name: {{ $releaseName }}
+    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-{{- range .Values.ingress.hosts }}
-  - host: {{ . }}
-    http:
-      paths:
-        - backend:
-            serviceName: {{ $releaseName }}
-            servicePort: 8089
-{{- end -}}
-{{- end -}}
+    - host: {{ .Values.ingress.hosts }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Release.Name }}
+                port:
+                  number: 8089

@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}
-  labels:
-    app: tiny
 spec:
   replicas: {{ .Values.replicas }}
   selector:
